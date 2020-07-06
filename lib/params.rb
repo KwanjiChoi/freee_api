@@ -72,3 +72,18 @@ INVOICE_PARAMS = {
     }
   ]
 }
+
+
+{
+  "company_id": 2510580,
+  "update_date": "2014-01-01",
+  "renew_target_id": 1680379633,
+  "details": [
+    {
+      "account_item_id": 400554531,
+      "tax_code": 1,
+      "amount": 1080,
+      "vat": 80
+    }
+  ]
+}

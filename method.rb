@@ -78,4 +78,4 @@ def get_torihiki
   res_hash = JSON.parse(response.body)
 end
 
-get_companies
+puts get_torihiki
