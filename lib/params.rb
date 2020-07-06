@@ -1,8 +1,15 @@
-require '../key.rb'
+require './key.rb'
 require 'date'
 
 PARAMS_HEADER = {
   "Content-Type" => "application/x-www-form-urlencoded"
+}
+
+REFRESH_TOKEN_BODY = {
+  "grant_type": "refresh_token",
+  "client_id": "#{API_CLIENT}",
+  "client_secret": "#{API_KEY}",
+  "refresh_token": "#{REFRESH_TOKEN}"
 }
 
 PARAMS_BODY = {
@@ -65,5 +72,3 @@ INVOICE_PARAMS = {
     }
   ]
 }
-
-  puts PARAMS_BODY
