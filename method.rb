@@ -78,4 +78,8 @@ def get_torihiki
   res_hash = JSON.parse(response.body)
 end
 
+def koushin
+
+end
+
 puts get_torihiki

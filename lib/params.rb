@@ -74,7 +74,7 @@ INVOICE_PARAMS = {
 }
 
 
-{
+KOUSHIN_PARAMS = {
   "company_id": 2510580,
   "update_date": "2014-01-01",
   "renew_target_id": 1680379633,
