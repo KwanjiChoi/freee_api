@@ -79,7 +79,7 @@ def get_torihiki
 end
 
 def koushin
-
+  uri = URI.parse(BASE_URL + '/api/1/deals/{id}/renews')
 end
 
-puts get_torihiki
+puts refresh_token

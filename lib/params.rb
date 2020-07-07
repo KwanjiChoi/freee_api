@@ -1,6 +1,7 @@
 require './key.rb'
 require 'date'
 
+
 PARAMS_HEADER = {
   "Content-Type" => "application/x-www-form-urlencoded"
 }
@@ -64,8 +65,8 @@ INVOICE_PARAMS = {
       "type": "normal",
       "qty": 1,
       "unit": "個",
-      "unit_price": 1,
-      "vat": 8000,
+      "unit_price": 12000,
+      "vat": 1200,
       "description": "備考",
       "tax_code": 1,
       "account_item_id": 400554531
@@ -76,14 +77,14 @@ INVOICE_PARAMS = {
 
 KOUSHIN_PARAMS = {
   "company_id": 2510580,
-  "update_date": "2014-01-01",
-  "renew_target_id": 1680379633,
+  "update_date": Date.new(Time.now.year, Time.now.month, -1),
+  "renew_target_id": 1682868218,
   "details": [
     {
-      "account_item_id": 400554531,
+      "account_item_id": 400554555, #売上高
       "tax_code": 1,
-      "amount": 1080,
-      "vat": 80
+      "amount": 1000,
+      "vat": 100
     }
   ]
 }
