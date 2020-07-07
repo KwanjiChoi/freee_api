@@ -1,32 +1,13 @@
-require './key.rb'
+require_relative '../key.rb'
 require 'date'
 
 
-PARAMS_HEADER = {
-  "Content-Type" => "application/x-www-form-urlencoded"
-}
-
-REFRESH_TOKEN_BODY = {
-  "grant_type": "refresh_token",
-  "client_id": "#{API_CLIENT}",
-  "client_secret": "#{API_KEY}",
-  "refresh_token": "#{REFRESH_TOKEN}"
-}
-
-PARAMS_BODY = {
-  "grant_type": "authorization_code",
-  "client_id": "#{API_CLIENT}",
-  "client_secret": "#{API_KEY}",
-  "code": "#{CODE}",
-  "redirect_uri": "#{CALL_BACK}"
-}
-
-USE_ACCESS_TOKEN_HEADER = {
+GET_HEADER = {
   "accept" => "application/json",
   "Authorization"=> "Bearer #{ACCESS_TOKEN}"
 }
 
-MAKE_INVOICE_HEADER = {
+POST_HEADER = {
   "accept" => "application/json",
   "Authorization"=> "Bearer #{ACCESS_TOKEN}",
   "Content-Type" => "application/json"

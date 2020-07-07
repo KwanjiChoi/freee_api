@@ -25,6 +25,7 @@ class Token
     raise 'Secretが入力されていません' if secret.empty?
   end
 
+  #アクセストークンの取得
   def get_access_token
     uri = URI.parse(TOKEN_URL)
     http = Net::HTTP.new(uri.host, uri.port)
@@ -36,6 +37,7 @@ class Token
     return res_hash = JSON.parse(response.body)
   end
 
+  #アクセストークンの更新
   def refresh_token(refresh_token)
      refresh_body = {
        "grant_type": "refresh_token",
@@ -56,4 +58,4 @@ end
 
 
 token = Token.new(API_CLIENT,API_KEY,CODE)
-puts token.get_access_token
+puts token.refresh_token(REFRESH_TOKEN)
