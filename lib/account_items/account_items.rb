@@ -5,9 +5,11 @@ require 'net/http'
 
 class AccountItem
   BASE_URL = 'https://api.freee.co.jp'
+  attr_accessor :params
   @params = {
     'company_id' => Company.company_id
   }
+
   def self.account_item_id
     uri = URI.parse(BASE_URL + '/api/1/account_items')
     uri.query =  URI.encode_www_form(@params)
