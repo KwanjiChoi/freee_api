@@ -5,9 +5,6 @@ require 'uri'
 
 BASE_URL = 'https://api.freee.co.jp'
 
-
-
-
 def make_invoice
   uri = URI.parse(BASE_URL + '/api/1/invoices')
   http = Net::HTTP.new(uri.host,uri.port)
