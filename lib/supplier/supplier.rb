@@ -15,5 +15,3 @@ class Supplier
     res_hash['partners'][0]['id']
   end
 end
-
-puts Supplier.supplier_id('CFO')

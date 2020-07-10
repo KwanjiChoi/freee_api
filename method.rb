@@ -18,6 +18,16 @@ def make_invoice
   res_hash = JSON.parse(response.body)
 end
 
+def get_torihiki_id(name)
+  uri = URI.parse(BASE_URL + '/api/1/partners')
+  uri.query = URI.encode_www_form({"company_id" => COMPANY_ID ,'keyword'=> name})
+  http = Net::HTTP.new(uri.host, uri.port)
+  http.use_ssl = true
+  headers = USE_ACCESS_TOKEN_HEADER
+  response = http.get(uri.request_uri, headers)
+  res_hash = JSON.parse(response.body)
+  puts res_hash['partners'][0]['id']
+end
 
 def get_torihiki
   torihiki_id = make_invoice['invoice']['deal_id']

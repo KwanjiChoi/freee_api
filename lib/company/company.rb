@@ -2,7 +2,6 @@ require_relative '../header/set_header.rb'
 require 'json'
 require 'net/http'
 
-
 #company_idの取得
 class Company
   BASE_URL = 'https://api.freee.co.jp'

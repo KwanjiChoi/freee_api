@@ -2,7 +2,7 @@ require_relative '../header/set_header.rb'
 require_relative '../company/company.rb'
 require 'json'
 require 'net/http'
-#勘定科目の取得
+#勘定科目idの取得
 class AccountItem
   BASE_URL = 'https://api.freee.co.jp'
   @params = {
