@@ -39,9 +39,3 @@ def get_torihiki
   response = http.get(uri.request_uri, headers)
   res_hash = JSON.parse(response.body)
 end
-
-def koushin
-  uri = URI.parse(BASE_URL + '/api/1/deals/{id}/renews')
-end
-
-puts refresh_token

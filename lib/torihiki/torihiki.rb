@@ -8,7 +8,7 @@ class Torihiki
   @params = {
     'company_id' => Company.company_id
   }
-  def self.details(id)
+  def self.target_id(id)
     uri = URI.parse(BASE_URL + "/api/1/deals/#{id}")
     http = Net::HTTP.new(uri.host, uri.port)
     uri.query = URI.encode_www_form(@params)
@@ -16,9 +16,10 @@ class Torihiki
     headers = Header.get_header
     response = http.get(uri.request_uri, headers)
     res_hash = JSON.parse(response.body)
+    res_hash['deal']['details'][0]['id']
   end
 end
-
-# torihiki = Torihiki.details(647335073)
+#
+# renew_target_id = Torihiki.target_id(647400745)
 # #取引行idの取得
-# puts torihiki["deal"]['renews'][0]["renew_target_id"]
+# puts renew_target_id
