@@ -19,6 +19,6 @@ class Torihiki
   end
 end
 
-torihiki = Torihiki.details(647335073)
-#取引行idの取得
-puts torihiki["deal"]['renews'][0]["renew_target_id"]
+# torihiki = Torihiki.details(647335073)
+# #取引行idの取得
+# puts torihiki["deal"]['renews'][0]["renew_target_id"]

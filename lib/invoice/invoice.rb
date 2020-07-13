@@ -62,5 +62,3 @@ class Invoice
     res_hash = JSON.parse(response.body)
   end
 end
-
-puts Invoice.make_invoice
