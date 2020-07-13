@@ -1,9 +1,11 @@
 require_relative '../header/set_header.rb'
 require_relative '../company/company.rb'
 require_relative '../supplier/supplier.rb'
+require_relative '../account_items/account_items.rb'
 require 'json'
 require 'net/http'
 require 'date'
+
 
 class Invoice
   BASE_URL = 'https://api.freee.co.jp'
@@ -44,7 +46,7 @@ class Invoice
         "vat": 1200,
         "description": "備考",
         "tax_code": 1,
-        "account_item_id": 400554531
+        "account_item_id": AccountItem.account_item_id('前受収益')
       }
     ]
   }
