@@ -8,9 +8,17 @@ require './company/company.rb'
 require './supplier/supplier.rb'
 require './helper.rb'
 
+#don`t touch!!
 month = Time.now.month
 year = Time.now.year
 count = 1
+
+#請求書総額(外税)
+amount = 120000
+#消費税額
+vat = 12000
+#+更新回数
+num = 12
 
 # 請求書のパラメーター
 invoice_params = {
@@ -46,8 +54,8 @@ invoice_params = {
       "type": "normal",
       "qty": 1,
       "unit": "個",
-      "unit_price": 12000,
-      "vat": 1200,
+      "unit_price": amount,
+      "vat": vat,
       "description": "備考",
       "tax_code": 1,
       "account_item_id": AccountItem.account_item_id('前受収益') #この請求書に紐づく取引の勘定科目は前受収益
@@ -63,8 +71,16 @@ torihiki_id = invoice['invoice']['deal_id']
 renew_target_id = Torihiki.target_id(torihiki_id)
 
 #取引id 取引行idを使ってプラス更新をかける
+num.times do
+  #初回のプラス更新額を計算
+  if count == 1
+    koushin_amount = first_price(amount,kaisu)
+    koushin_vat = first_price(vat,kaisu)
+  else
+    koushin_amount = amount / kaisu
+    koushin_vat = vat / kaisu
+  end
 
-12.times do
   date = Date.new(year, month, -1)
   koushin_params = {
     "company_id": Company.company_id,
@@ -74,8 +90,8 @@ renew_target_id = Torihiki.target_id(torihiki_id)
       {
         "account_item_id": AccountItem.account_item_id('売上高'),#プラス更新の勘定科目は売上高
         "tax_code": 1,
-        "amount": 1200,
-        "vat": 120
+        "amount": koushin_amount,
+        "vat": koushin_vat
       }
     ]
   }
