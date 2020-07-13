@@ -19,7 +19,3 @@ class Torihiki
     res_hash['deal']['details'][0]['id']
   end
 end
-#
-# renew_target_id = Torihiki.target_id(647400745)
-# #取引行idの取得
-# puts renew_target_id

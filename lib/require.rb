@@ -6,12 +6,17 @@ require './torihiki/torihiki.rb'
 require './account_items/account_items.rb'
 require './company/company.rb'
 require './supplier/supplier.rb'
+require './helper.rb'
+
+month = Time.now.month
+year = Time.now.year
+count = 1
 
 # 請求書のパラメーター
 invoice_params = {
   "company_id": Company.company_id,
   "issue_date": Date.today,
-  "due_date": Date.new(Time.now.year, Time.now.month, -1),
+  "due_date": Date.new(month, year, -1),
   "partner_id": Supplier.supplier_id('CFO'),
   "booking_date": Date.today,
   "description": "#{Date.today.month}月分請求書",
@@ -57,20 +62,26 @@ torihiki_id = invoice['invoice']['deal_id']
 #上記取引idの取引行idを取得
 renew_target_id = Torihiki.target_id(torihiki_id)
 
-#取引id 取引業idを使ってプラス更新をかける
+#取引id 取引行idを使ってプラス更新をかける
 
-koushin_params = {
-  "company_id": Company.company_id,
-  "update_date": Date.new(Time.now.year, Time.now.month, -1),
-  "renew_target_id": renew_target_id,
-  "details": [
-    {
-      "account_item_id": AccountItem.account_item_id('売上高'),#プラス更新の勘定科目は売上高
-      "tax_code": 1,
-      "amount": 1200,
-      "vat": 120
-    }
-  ]
-}
-
-puts Koushin.post_koushin(torihiki_id,koushin_params)
+12.times do
+  date = Date.new(year, month, -1)
+  koushin_params = {
+    "company_id": Company.company_id,
+    "update_date": date,
+    "renew_target_id": renew_target_id,
+    "details": [
+      {
+        "account_item_id": AccountItem.account_item_id('売上高'),#プラス更新の勘定科目は売上高
+        "tax_code": 1,
+        "amount": 1200,
+        "vat": 120
+      }
+    ]
+  }
+  puts Koushin.post_koushin(torihiki_id,koushin_params)
+  # 翌月の年月を取得
+  month = add_month(month)
+  year += 1 if month == 1
+  count += 1
+end
