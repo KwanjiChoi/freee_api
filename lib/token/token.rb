@@ -57,5 +57,5 @@ class Token
 end
 
 
-# token = Token.new(API_CLIENT,API_KEY,CODE)
-# puts token.refresh_token(REFRESH_TOKEN)
+token = Token.new(API_CLIENT,API_KEY,CODE)
+puts token.get_access_token
